@@ -138,43 +138,93 @@ class TestCase(BaseTestCase):
         with self.assertRaises(expected_exception):
             self.result()
 
-    def assertResultAlmost(self, value):
-        self.assertAlmostEqual(self.result(), value)
+    def assertResultAlmost(self, value, places=None, delta=None):
+        """
+        Fail if the result is unequal to the value as determined by their
+        difference rounded to the given number of decimal places (default 7)
+        and comparing to zero, or by comparing that the difference between the
+        two objects is more than the given delta.
+        """
+        self.assertAlmostEqual(self.result(), value, places, delta=delta)
 
-    def assertResultNotAlmost(self, value):
-        self.assertNotAlmostEqual(self.result(), value)
+    def assertResultNotAlmost(self, value, places=None, delta=None):
+        """
+        Fail if the result is equal to the value as determined by their
+        difference rounded to the given number of decimal places (default 7)
+        and comparing to zero, or by comparing that the difference between the
+        two objects is less than the given delta.
+        """
+        self.assertNotAlmostEqual(self.result(), value, places, delta=delta)
 
     def assertResultGreater(self, value):
+        """
+        Just like self.assertTrue(self.result() > value), but with a nicer
+        default message.
+        """
         self.assertGreater(self.result(), value)
 
     def assertResultGreaterEqual(self, value):
+        """
+        Just like self.assertTrue(self.result() >= value), but with a nicer
+        default message.
+        """
         self.assertGreaterEqual(self.result(), value)
 
     def assertResultLess(self, value):
+        """
+        Just like self.assertTrue(self.result() < value), but with a nicer
+        default message.
+        """
         self.assertLess(self.result(), value)
 
     def assertResultLessEqual(self, value):
+        """
+        Just like self.assertTrue(self.result() <= value), but with a nicer
+        default message.
+        """
         self.assertLessEqual(self.result(), value)
 
     def assertResultRegex(self, expected_regex):
+        """
+        Fail the test unless the result matches the regular expression.
+        """
         self.assertRegex(self.result(), expected_regex)
 
     def assertResultNotRegex(self, unexpected_regex):
+        """
+        Fail the test if the result matches the regular expression.
+        """
         self.assertNotRegex(self.result(), unexpected_regex)
 
     def assertResultCount(self, iterable):
+        """
+        Assert that the result has the same elements as the iterable without
+        regard to order.
+        """
         self.assertCountEqual(self.result(), iterable)
 
     def assertResultList(self, lst):
+        """
+        Assert that the result is equal to lst.
+        """
         self.assertListEqual(self.result(), lst)
 
     def assertResultTuple(self, tpl):
+        """
+        Assert that the result is equal to tpl.
+        """
         self.assertTupleEqual(self.result(), tpl)
 
     def assertResultSet(self, st):
+        """
+        Assert that the result is equal to st.
+        """
         self.assertSetEqual(self.result(), st)
 
     def assertResultDict(self, dct):
+        """
+        Assert that the result is equal to dct.
+        """
         self.assertDictEqual(self.result(), dct)
 
     def _callTestMethod(self, method):
