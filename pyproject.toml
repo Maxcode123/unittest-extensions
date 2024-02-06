@@ -1,0 +1,33 @@
+[tool.black]
+line-length = 88
+
+[tool.mypy]
+exclude = "tests"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["unittest_extensions"]
+exclude = ["unittest_extensions.tests"]
+namespaces = false
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unittest-extensions"
+version = "0.0.1"
+authors = [
+    { name="Maximos Nikiforakis", email="nikiforos@live.co.uk" },
+]
+description = "Extension of Python's standard unittest library"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Maxcode123/unittest-extensions"
+Issues = "https://github.com/Maxcode123/unittest-extensions/issues"
