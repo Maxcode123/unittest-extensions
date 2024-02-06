@@ -165,9 +165,6 @@ class TestCase(BaseTestCase):
     def assertResultCount(self, iterable):
         self.assertCountEqual(self.result(), iterable)
 
-    def assertResultSequence(self, sequence):
-        self.assertSequenceEqual(self.result(), sequence)
-
     def assertResultList(self, lst):
         self.assertListEqual(self.result(), lst)
 
