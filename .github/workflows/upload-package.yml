@@ -1,0 +1,36 @@
+name: Upload package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  test-package:
+    uses: ./.github/workflows/test-package.yml
+
+  upload-package:
+    needs: test-package
+
+    runs-on: ubuntu-latest
+    env:
+      INTERPRETER: python
+      PIP: python -m pip
+      TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install package builder
+      run: make install-package-builder
+    - name: Build package
+      run: make build-package
+    - name: Install package uploader
+      run: make install-package-uploader
+    - name: Upload package
+      run: make upload-package
