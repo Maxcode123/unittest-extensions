@@ -16,7 +16,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unittest-extensions"
-version = "0.0.1"
+version = "0.1.0"
 authors = [
     { name="Maximos Nikiforakis", email="nikiforos@live.co.uk" },
 ]
