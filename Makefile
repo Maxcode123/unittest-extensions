@@ -17,7 +17,7 @@ upload-test-package: build-package install-package-uploader
 	$(INTERPRETER) -m twine upload --verbose --repository testpypi -u '__token__' -p $(TEST_PYPI_TOKEN) dist/*
 
 upload-package: build-package install-package-uploader
-	$(INTERPRETER) -m twine upload dist/*
+	$(INTERPRETER) -m twine upload --verbose -u '__token__' dist/*
 
 clean:
 	rm -rf dist src/unittest_extensions.egg-info
