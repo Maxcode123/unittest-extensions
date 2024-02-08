@@ -1,15 +1,9 @@
-from typing import Callable, TypeVar, TypeAlias
-
-TestClass = TypeVar("TestClass")
-TestMethod: TypeAlias = Callable[[TestClass], None]
-
-
-def args(kwargs) -> TestMethod:
+def args(kwargs):
     """
     Decorate test methods to define arguments for your subject.
     """
 
-    def wrapper(method) -> TestMethod:
+    def wrapper(method):
         method._subjectKwargs = kwargs
         return method
 
