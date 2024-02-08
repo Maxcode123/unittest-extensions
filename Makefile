@@ -13,9 +13,6 @@ test-package: install-local-package
 build-package: test-package install-package-builder
 	$(INTERPRETER) -m build
 
-upload-test-package: build-package install-package-uploader
-	$(INTERPRETER) -m twine upload --verbose --repository testpypi -u '__token__' -p $(TEST_PYPI_TOKEN) dist/*
-
 upload-package: build-package install-package-uploader
 	$(INTERPRETER) -m twine upload --verbose -u '__token__' dist/*
 
