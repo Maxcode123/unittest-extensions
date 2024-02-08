@@ -7,13 +7,13 @@ install-package-uploader:
 install-local-package:
 	$(PIP) install -e .
 
-test-package: install-local-package
+test-package:
 	$(INTERPRETER) -m unittest discover -v src/unittest_extensions/tests/
 
-build-package: test-package install-package-builder
+build-package:
 	$(INTERPRETER) -m build
 
-upload-package: build-package install-package-uploader
+upload-package:
 	$(INTERPRETER) -m twine upload --verbose -u '__token__' dist/*
 
 clean:
