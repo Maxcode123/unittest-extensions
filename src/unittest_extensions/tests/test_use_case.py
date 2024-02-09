@@ -123,3 +123,15 @@ class TestChangeState(TestCase):
     def test_change_state_twice(self):
         self.assertResult(2)
         self.assertResult(3)
+
+    def test_change_state_cached_result(self):
+        self.result()
+        self.assertEqual(self.cachedResult(), 2)
+        self.result()
+        self.assertEqual(self.cachedResult(), 3)
+
+    def test_manually_change_state_cached_result(self):
+        self.result()
+        self.assertEqual(self.cachedResult(), 2)
+        self.instance.state_var += 1
+        self.assertEqual(self.cachedResult(), 2)

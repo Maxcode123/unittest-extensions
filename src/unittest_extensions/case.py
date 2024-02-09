@@ -43,7 +43,8 @@ class TestCase(BaseTestCase):
         decorator.
         """
         try:
-            return self.subject(**self._subjectKwargs)
+            self._subject_result = self.subject(**self._subjectKwargs)
+            return self._subject_result
         except TypeError as e:
             msg = e.args[0]
             if "unexpected keyword argument" in msg:
@@ -59,6 +60,14 @@ class TestCase(BaseTestCase):
                     + ". Did you decorate all test methods with 'args'?"
                 )
             raise e
+
+    def cachedResult(self) -> Any:
+        """
+        Return the result of the last `subject` call.
+        Use this function if when you to assert different attributes of your
+        subject without executing it multiple times.
+        """
+        return self._subject_result
 
     def assertResult(self, value):
         """
