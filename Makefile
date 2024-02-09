@@ -1,3 +1,12 @@
+install-documentation-builder:
+	$(PIP) install mkdocs
+
+start-documentation-server:
+	$(INTERPRETER) -m mkdocs serve
+
+deploy-documentation:
+	$(INTERPRETER) -m mkdocs gh-deploy --config-file mkdocs.yml
+
 install-package-builder:
 	$(PIP) install --upgrade build
 
