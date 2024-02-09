@@ -1,4 +1,5 @@
 from unittest_extensions import TestCase, args
+from unittest_extensions.error import TestError
 
 
 class TestClass:
@@ -48,6 +49,18 @@ class TestAdd(TestCase):
     @args({"a": "1-", "b": "3-"})
     def test_add_str_to_str(self):
         self.assertResult("1-3-")
+
+    @args({"a": 1, "c": 2})
+    def test_wrong_kwargs_raises(self):
+        self.assertResultRaisesRegex(
+            TestError, "Subject received an unexpected keyword argument."
+        )
+
+    @args({"a": 1})
+    def test_missing_arg_raises(self):
+        self.assertResultRaisesRegex(
+            TestError, "Subject misses 1 required positional argument."
+        )
 
 
 class TestAppend(TestCase):
@@ -110,3 +123,15 @@ class TestChangeState(TestCase):
     def test_change_state_twice(self):
         self.assertResult(2)
         self.assertResult(3)
+
+    def test_change_state_cached_result(self):
+        self.result()
+        self.assertEqual(self.cachedResult(), 2)
+        self.result()
+        self.assertEqual(self.cachedResult(), 3)
+
+    def test_manually_change_state_cached_result(self):
+        self.result()
+        self.assertEqual(self.cachedResult(), 2)
+        self.instance.state_var += 1
+        self.assertEqual(self.cachedResult(), 2)
