@@ -1,0 +1,7 @@
+site_name: unittest-extensions Documentation
+site_url: https://maxcode123.github.io/unittest-extensions/
+nav:
+  - Home: index.md
+  - Examples: examples.md
+  - API Reference: api_reference.md
+theme: readthedocs
