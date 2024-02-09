@@ -138,6 +138,14 @@ class TestCase(BaseTestCase):
         with self.assertRaises(expected_exception):
             self.result()
 
+    def assertResultRaisesRegex(self, expected_exception, expected_regex):
+        """
+        Fail unless an exception of class expected_exception is raised by the
+        result and the message matches the regex.
+        """
+        with self.assertRaisesRegex(expected_exception, expected_regex):
+            self.result()
+
     def assertResultAlmost(self, value, places=None, delta=None):
         """
         Fail if the result is unequal to the value as determined by their
