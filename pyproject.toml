@@ -22,12 +22,24 @@ authors = [
 ]
 description = "Extension of Python's standard unittest library"
 readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
 classifiers = [
+    "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Topic :: Testing :: Unit",
+    "Topic :: Testing :: BDD",
 ]
 
 [project.urls]
 Homepage = "https://github.com/Maxcode123/unittest-extensions"
+Documentation = "https://maxcode123.github.io/unittest-extensions/"
 Issues = "https://github.com/Maxcode123/unittest-extensions/issues"
