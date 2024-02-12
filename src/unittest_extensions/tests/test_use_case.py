@@ -62,6 +62,11 @@ class TestAdd(TestCase):
             TestError, "Subject misses 1 required positional argument."
         )
 
+    @args({"a": 1, "b": 2})
+    def test_cachedResult_raises(self):
+        with self.assertRaises(TestError):
+            self.cachedResult()
+
 
 class TestAppend(TestCase):
 

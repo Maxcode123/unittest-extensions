@@ -64,9 +64,13 @@ class TestCase(BaseTestCase):
     def cachedResult(self) -> Any:
         """
         Return the result of the last `subject` call.
-        Use this function if when you to assert different attributes of your
+        Use this function when you want to assert different attributes of your
         subject without executing it multiple times.
+
+        Raises `unittest_extensions.TestError` if subject has not been called.
         """
+        if not hasattr(self, "_subject_result"):
+            raise TestError("Cannot call 'cachedResult' before calling 'result'")
         return self._subject_result
 
     def assertResult(self, value):
