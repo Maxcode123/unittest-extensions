@@ -2,17 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://maxcode123.github.io/unittest-extensions/</loc>
-         <lastmod>2024-02-10</lastmod>
+         <lastmod>2024-02-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxcode123.github.io/unittest-extensions/api_reference/</loc>
-         <lastmod>2024-02-10</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://maxcode123.github.io/unittest-extensions/examples/</loc>
-         <lastmod>2024-02-10</lastmod>
+         <lastmod>2024-02-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

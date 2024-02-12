@@ -43,10 +43,6 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
-                </li>
-              </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">API Reference</a>
                 </li>
@@ -74,12 +70,105 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><code>unittest_extensions.TestCase</code> extends <code>unittest.TestCase</code> with the below methods.  </p>
+<p><strong>assertResult(self, value)</strong><br />
+Fail if the result is unequal to the value as determined by the '==' operator.<br />
+Equivalent to <code>assertEqual(self.result(), value)</code>.</p>
+<p><strong>assertResultAlmost(self, value, places=None, delta=None)</strong><br />
+Fail if the result is unequal to the value as determined by their difference rounded
+to the given number of decimal places (default 7) and comparing to zero, or by
+comparing that the difference between the two objects is more than the given delta.<br />
+Equivalent to <code>assertAlmostEqual(self.result(), value, places, delta=delta)</code>.</p>
+<p><strong>assertResultCount(self, iterable)</strong><br />
+Assert that the result has the same elements as the iterable without regard to order.<br />
+Equivalent to <code>assertCountEqual(self.result(), iterable)</code>.</p>
+<p><strong>assertResultDict(self, dct)</strong><br />
+Assert that the result is equal to dct.<br />
+Equivalent to <code>assertDictEqual(self.result(), dct)</code>.</p>
+<p><strong>assertResultFalse(self)</strong><br />
+Check that the result is false.<br />
+Equivalent to <code>assertFalse(self.result())</code>.</p>
+<p><strong>assertResultGreater(self, value)</strong><br />
+Just like self.assertTrue(self.result() &gt; value), but with a nicer default message.
+Equivalent to <code>assertGreater(self, result(), value)</code>.</p>
+<p><strong>assertResultGreaterEqual(self, value)</strong><br />
+Just like self.assertTrue(self.result() &gt;= value), but with a nicer default message.<br />
+Equivalent to <code>assertGreaterEqual(self.result(), value)</code>.</p>
+<p><strong>assertResultIn(self, container)</strong><br />
+Just like self.assertTrue(self.result() in container), but with a nicer default message.<br />
+Equivalent to <code>assertIn(self.result(), container)</code>.</p>
+<p><strong>assertResultIs(self, value)</strong><br />
+Just like self.assertTrue(self.result() is value), but with a nicer default message.<br />
+Equivalent to <code>assertIs(self.result(), value)</code>.</p>
+<p><strong>assertResultIsInstance(self, cls)</strong><br />
+Just like self.assertTrue(self.result() in container), but with a nicer default message.<br />
+Equivalent to <code>assertIsInstance(self.result(), cls)</code>.</p>
+<p><strong>assertResultIsNot(self, value)</strong><br />
+Just like self.assertTrue(self.result() is not value), but with a nicer default message.<br />
+Equivalent to <code>assertIsNot(self.result(), value)</code>.</p>
+<p><strong>assertResultIsNotInstance(self, cls)</strong><br />
+Just like self.assertTrue(self.result() not in container), but with a nicer default message.<br />
+Equivalent to <code>assertNotIsInstance(self.result(), cls)</code>.</p>
+<p><strong>assertResultLess(self, value)</strong><br />
+Just like self.assertTrue(self.result() &lt; value), but with a nicer default message.<br />
+Equivalent to <code>assertLess(self.result(), value)</code>.</p>
+<p><strong>assertResultLessEqual(self, value)</strong><br />
+Just like self.assertTrue(self.result() &lt;= value), but with a nicer default message.<br />
+Equivalent to <code>assertLessEqual(self.result(), value)</code>.</p>
+<p><strong>assertResultList(self, lst)</strong><br />
+Assert that the result is equal to lst.<br />
+Equivalent to <code>assertListEqual(self.result(), lst)</code>.</p>
+<p><strong>assertResultNot(self, value)</strong><br />
+Fail if the result is equal to the value as determined by the '==' operator.<br />
+Equivalent to <code>assertNotEqual(self.result(), value)</code>.</p>
+<p><strong>assertResultNotAlmost(self, value, places=None, delta=None)</strong><br />
+Fail if the result is equal to the value as determined by their difference rounded
+to the given number of decimal places (default 7) and comparing to zero, or by
+comparing that the difference between the two objects is less than the given delta.<br />
+Equivalent to <code>assertNotAlmostEqual(self.result(), value)</code>.</p>
+<p><strong>assertResultNotIn(self, container)</strong><br />
+Just like self.assertTrue(self.result() not in container), but with a nicer default message.<br />
+Equivalent to <code>assertNotIn(self.result(), container)</code>.</p>
+<p><strong>assertResultNotRegex(self, unexpected_regex)</strong><br />
+Fail the test if the result matches the regular expression.<br />
+Equivalent to <code>assertNotRegex(self.result(), unexpected_regex)</code>.</p>
+<p><strong>assertResultRaises(self, expected_exception)</strong><br />
+Fail unless an exception of class expected_exception is raised by the result. If
+a different type of exception is raised, it will not be caught, and the test case
+will be deemed to have suffered an error, exactly as for an unexpected exception.<br />
+Equivalent to</p>
+<pre><code class="language-py">with self.assertRaises(expected_exception):
+            self.result()
+</code></pre>
+<p><strong>assertResultRaisesRegex(self, expected_exception, expected_regex)</strong><br />
+Fail unless an exception of class expected_exception is raised by the result and the message matches the regex.<br />
+Equivalent to</p>
+<pre><code class="language-py">with self.assertRaisesRegex(expected_exception, expected_regex):
+            self.result()
+</code></pre>
+<p><strong>assertResultRegex(self, expected_regex)</strong><br />
+Fail the test unless the result matches the regular expression.<br />
+Equivalent to <code>self.assertRegex(self.result(), expected_regex)</code>.</p>
+<p><strong>assertResultSet(self, st)</strong><br />
+Assert that the result is equal to st.<br />
+Equivalent to <code>self.assertSetEqual(self.result(), st)</code>.</p>
+<p><strong>assertResultTrue(self)</strong><br />
+Check that the result is true.<br />
+Equivalent to <code>self.assertTrue(self.result())</code>.</p>
+<p><strong>assertResultTuple(self, tpl)</strong><br />
+Assert that the result is equal to tpl.<br />
+Equivalent to <code>self.assertTupleEqual(self.result(), tpl)</code>.</p>
+<p><strong>cachedResult(self) -&gt; Any</strong><br />
+Return the result of the last <code>subject</code> call. Use this function when you want to
+assert different attributes of your subject without executing it multiple times.  </p>
+<p>Raises <code>unittest_extensions.TestError</code> if subject has not been called.</p>
+<p><strong>result(self) -&gt; Any</strong><br />
+Result of the <code>subject</code> called with arguments defined by the <code>args</code> decorator.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../examples/" class="btn btn-neutral float-left" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -102,7 +191,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>
