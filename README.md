@@ -1,6 +1,5 @@
-# unittest-extensions
+# **unittest-extensions**
 Extension of Python's standard unittest library  
-[Documentation](https://maxcode123.github.io/unittest-extensions/)
 
 # Introduction
 If testing is not easy, you will not do it.  
@@ -13,6 +12,11 @@ This minimal library aims to simplify behavioural testing with Python's standard
 
  `unittest-extensions` does not have any dependencies, it is solely based on the
  Python standard library and mainly inspired by Ruby's [`RSpec`](https://rspec.info/) framework.  
+
+# Documentation
+This project is documented at:  
+https://maxcode123.github.io/unittest-extensions/
+
 
 # Installation
 ```
