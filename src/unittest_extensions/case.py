@@ -45,15 +45,15 @@ class TestCase(BaseTestCase):
         try:
             self._subject_result = self.subject(**self._subjectKwargs)
             return self._subject_result
-        except TypeError as e:
+        except Exception as e:
             msg = e.args[0]
-            if "unexpected keyword argument" in msg:
+            if "subject() got an unexpected keyword argument" in msg:
                 raise TestError(
                     "Subject received "
                     + msg.split("subject() got ")[1]
                     + ". Did you decorate a test method with the wrong 'args'?"
                 )
-            elif "required positional argument" in msg:
+            elif "subject() missing" in msg and ("required positional argument" in msg):
                 raise TestError(
                     "Subject misses "
                     + msg.split("subject() missing ")[1]

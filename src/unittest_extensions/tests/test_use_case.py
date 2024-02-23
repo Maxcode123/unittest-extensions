@@ -64,8 +64,21 @@ class TestAdd(TestCase):
 
     @args({"a": 1, "b": 2})
     def test_cachedResult_raises(self):
-        with self.assertRaises(TestError):
+        with self.assertRaisesRegex(
+            TestError, "Cannot call 'cachedResult' before calling 'result'"
+        ):
             self.cachedResult()
+
+
+class TestSubjectMissingRequiredPositionalArguments(TestCase):
+    def subject(self, a, b, c, d):
+        return 1
+
+    @args({"a": 1, "b": 2})
+    def test_raises_test_error(self):
+        self.assertResultRaisesRegex(
+            TestError, "Subject misses 2 required positional arguments"
+        )
 
 
 class TestAppend(TestCase):
