@@ -1,5 +1,5 @@
 install-documentation-builder:
-	$(PIP) install mkdocs
+	$(PIP) install mkdocs 'mkdocstrings[python]'
 
 start-documentation-server:
 	$(INTERPRETER) -m mkdocs serve
