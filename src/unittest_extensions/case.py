@@ -95,6 +95,8 @@ class TestCase(BaseTestCase):
         """
         Fail if the result is unequal to the value as determined by the '=='
         operator.
+
+        Equivalent to `assertEqual(self.result(), value)`.
         """
         self.assertEqual(self.result(), value)
 
@@ -102,18 +104,24 @@ class TestCase(BaseTestCase):
         """
         Fail if the result is equal to the value as determined by the '=='
         operator.
+
+        Equivalent to `assertNotEqual(self.result(), value)`.
         """
         self.assertNotEqual(self.result(), value)
 
     def assertResultTrue(self):
         """
         Check that the result is true.
+
+        Equivalent to `self.assertTrue(self.result())`.
         """
         self.assertTrue(self.result())
 
     def assertResultFalse(self):
         """
         Check that the result is false.
+
+        Equivalent to `assertFalse(self.result())`.
         """
         self.assertFalse(self.result())
 
@@ -121,6 +129,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() is value), but with a
         nicer default message.
+
+        Equivalent to `assertIs(self.result(), value)`.
         """
         self.assertIs(self.result(), value)
 
@@ -128,6 +138,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() is not value), but with a
         nicer default message.
+
+        Equivalent to `assertIsNot(self.result(), value)`.
         """
         self.assertIsNot(self.result(), value)
 
@@ -135,6 +147,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() in container), but with a
         nicer default message.
+
+        Equivalent to `assertIn(self.result(), container)`.
         """
         self.assertIn(self.result(), container)
 
@@ -142,6 +156,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() not in container), but
         with a nicer default message.
+
+        Equivalent to `assertNotIn(self.result(), container)`.
         """
         self.assertNotIn(self.result(), container)
 
@@ -149,6 +165,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() in container), but with a
         nicer default message.
+
+        Equivalent to `assertIsInstance(self.result(), cls)`.
         """
         self.assertIsInstance(self.result(), cls)
 
@@ -156,6 +174,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() not in container), but with a
         nicer default message.
+
+        Equivalent to `assertNotIsInstance(self.result(), cls)`.
         """
         self.assertNotIsInstance(self.result(), cls)
 
@@ -165,6 +185,12 @@ class TestCase(BaseTestCase):
         result. If a different type of exception is raised, it will not be
         caught, and the test case will be deemed to have suffered an error,
         exactly as for an unexpected exception.
+
+        Equivalent to
+        ```
+        with self.assertRaises(expected_exception):
+                    self.result()
+        ```
         """
         with self.assertRaises(expected_exception):
             self.result()
@@ -173,6 +199,12 @@ class TestCase(BaseTestCase):
         """
         Fail unless an exception of class expected_exception is raised by the
         result and the message matches the regex.
+
+        Equivalent to
+        ```
+        with self.assertRaisesRegex(expected_exception, expected_regex):
+                    self.result()
+        ```
         """
         with self.assertRaisesRegex(expected_exception, expected_regex):
             self.result()
@@ -183,6 +215,8 @@ class TestCase(BaseTestCase):
         difference rounded to the given number of decimal places (default 7)
         and comparing to zero, or by comparing that the difference between the
         two objects is more than the given delta.
+
+        Equivalent to `assertAlmostEqual(self.result(), value, places, delta=delta).`
         """
         self.assertAlmostEqual(self.result(), value, places, delta=delta)
 
@@ -192,6 +226,8 @@ class TestCase(BaseTestCase):
         difference rounded to the given number of decimal places (default 7)
         and comparing to zero, or by comparing that the difference between the
         two objects is less than the given delta.
+
+        Equivalent to `assertResultNotAlmost(self, value, places=None, delta=None)`.
         """
         self.assertNotAlmostEqual(self.result(), value, places, delta=delta)
 
@@ -199,6 +235,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() > value), but with a nicer
         default message.
+
+        Equivalent to `assertGreater(self, result(), value)`.
         """
         self.assertGreater(self.result(), value)
 
@@ -206,6 +244,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() >= value), but with a nicer
         default message.
+
+        Equivalent to `assertGreaterEqual(self.result(), value)`.
         """
         self.assertGreaterEqual(self.result(), value)
 
@@ -213,6 +253,8 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() < value), but with a nicer
         default message.
+
+        Equivalent to `assertLess(self.result(), value)`.
         """
         self.assertLess(self.result(), value)
 
@@ -220,18 +262,24 @@ class TestCase(BaseTestCase):
         """
         Just like self.assertTrue(self.result() <= value), but with a nicer
         default message.
+
+        Equivalent to `assertLessEqual(self.result(), value)`.
         """
         self.assertLessEqual(self.result(), value)
 
     def assertResultRegex(self, expected_regex):
         """
         Fail the test unless the result matches the regular expression.
+
+        Equivalent to `self.assertRegex(self.result(), expected_regex)`.
         """
         self.assertRegex(self.result(), expected_regex)
 
     def assertResultNotRegex(self, unexpected_regex):
         """
         Fail the test if the result matches the regular expression.
+
+        Equivalent to `assertNotRegex(self.result(), unexpected_regex)`.
         """
         self.assertNotRegex(self.result(), unexpected_regex)
 
@@ -239,30 +287,40 @@ class TestCase(BaseTestCase):
         """
         Assert that the result has the same elements as the iterable without
         regard to order.
+
+        Equivalent to `assertCountEqual(self.result(), iterable).`
         """
         self.assertCountEqual(self.result(), iterable)
 
     def assertResultList(self, lst):
         """
         Assert that the result is equal to lst.
+
+        Equivalent to `assertListEqual(self.result(), lst)`.
         """
         self.assertListEqual(self.result(), lst)
 
     def assertResultTuple(self, tpl):
         """
         Assert that the result is equal to tpl.
+
+        Equivalent to `self.assertTupleEqual(self.result(), tpl)`.
         """
         self.assertTupleEqual(self.result(), tpl)
 
     def assertResultSet(self, st):
         """
         Assert that the result is equal to st.
+
+        Equivalent to `self.assertSetEqual(self.result(), st)`.
         """
         self.assertSetEqual(self.result(), st)
 
     def assertResultDict(self, dct):
         """
         Assert that the result is equal to dct.
+
+        Equivalent to `assertDictEqual(self.result(), dct)`.
         """
         self.assertDictEqual(self.result(), dct)
 
