@@ -56,8 +56,8 @@ class TestCase(BaseTestCase):
         decorator.
         """
         try:
-            self._subject_result = self.subject(**self._subjectKwargs)
-            return self._subject_result
+            self._subjectResult = self.subject(**self._subjectKwargs)
+            return self._subjectResult
         except Exception as e:
             msg = e.args[0]
             if "subject() got an unexpected keyword argument" in msg:
@@ -85,11 +85,11 @@ class TestCase(BaseTestCase):
         The returned object is a copy of the result. Thus, the result cannot be
         mutated by mutating the returned object of this method.
         """
-        if not hasattr(self, "_subject_result"):
+        if not hasattr(self, "_subjectResult"):
             raise TestError("Cannot call 'cachedResult' before calling 'result'")
         # NOTE: deepcopy keeps a reference of the copied object. This can cause
         # issues with memory.
-        return deepcopy(self._subject_result)
+        return deepcopy(self._subjectResult)
 
     def assertResult(self, value):
         """
