@@ -153,3 +153,32 @@ class TestChangeState(TestCase):
         self.assertEqual(self.cachedResult(), 2)
         self.instance.state_var += 1
         self.assertEqual(self.cachedResult(), 2)
+
+
+class TestSubjectKwargs(TestCase):
+    def subject(self, a, b):
+        return a + b
+
+    @args({"a": 1, "b": 2})
+    def test_kwarg_values(self):
+        self.assertDictEqual(self.subjectKwargs(), {"a": 1, "b": 2})
+
+    @args({"a": 3, "b": 4})
+    def test_different_kwarg_values(self):
+        self.assertDictEqual(self.subjectKwargs(), {"a": 3, "b": 4})
+
+    @args({"a": 1, "b": 2})
+    def test_kwargs_are_not_mutated(self):
+        self.subjectKwargs()["b"] = None
+        self.assertDictEqual(self._subjectKwargs, {"a": 1, "b": 2})
+        self.assertDictEqual(self.subjectKwargs(), {"a": 1, "b": 2})
+
+
+class TestSubjectMutableKwargs(TestCase):
+    def subject(self, lst):
+        return lst
+
+    @args({"lst": [1, 2]})
+    def test_mutable_kwargs(self):
+        self.subjectKwargs()["lst"].append(3)
+        self.assertDictEqual(self._subjectKwargs, {"lst": [1, 2]})

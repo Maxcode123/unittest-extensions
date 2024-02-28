@@ -1,7 +1,8 @@
 from unittest import TestCase as BaseTestCase
-from typing import Any
+from typing import Any, Dict
 from abc import abstractmethod
 from warnings import warn
+from copy import deepcopy
 
 from unittest_extensions.error import TestError
 
@@ -36,6 +37,18 @@ class TestCase(BaseTestCase):
 
     @abstractmethod
     def subject(self, **kwargs) -> Any: ...
+
+    def subjectKwargs(self) -> Dict[str, Any]:
+        """
+        Return the keyword arguments of the subject.
+
+        The dictionary returned is a copy of the original arguments. Thus,
+        the arguments that the subject receives cannot be mutated by mutating
+        the returned object of this method.
+        """
+        # NOTE: deepcopy keeps a reference of the copied object. This can cause
+        # issues with memory.
+        return deepcopy(self._subjectKwargs)
 
     def result(self) -> Any:
         """
