@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -31,11 +32,7 @@
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
           <a href=".." class="icon icon-home"> unittest-extensions Documentation
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
-  </form>
-</div>
+        </a>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
@@ -45,6 +42,8 @@
               </ul>
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">API Reference</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
       </div>
@@ -70,100 +69,1920 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><code>unittest_extensions.TestCase</code> extends <code>unittest.TestCase</code> with the below methods.  </p>
-<p><strong>assertResult(self, value)</strong><br />
-Fail if the result is unequal to the value as determined by the '==' operator.<br />
-Equivalent to <code>assertEqual(self.result(), value)</code>.</p>
-<p><strong>assertResultAlmost(self, value, places=None, delta=None)</strong><br />
-Fail if the result is unequal to the value as determined by their difference rounded
-to the given number of decimal places (default 7) and comparing to zero, or by
-comparing that the difference between the two objects is more than the given delta.<br />
-Equivalent to <code>assertAlmostEqual(self.result(), value, places, delta=delta)</code>.</p>
-<p><strong>assertResultCount(self, iterable)</strong><br />
-Assert that the result has the same elements as the iterable without regard to order.<br />
-Equivalent to <code>assertCountEqual(self.result(), iterable)</code>.</p>
-<p><strong>assertResultDict(self, dct)</strong><br />
-Assert that the result is equal to dct.<br />
-Equivalent to <code>assertDictEqual(self.result(), dct)</code>.</p>
-<p><strong>assertResultFalse(self)</strong><br />
-Check that the result is false.<br />
-Equivalent to <code>assertFalse(self.result())</code>.</p>
-<p><strong>assertResultGreater(self, value)</strong><br />
-Just like self.assertTrue(self.result() &gt; value), but with a nicer default message.
-Equivalent to <code>assertGreater(self, result(), value)</code>.</p>
-<p><strong>assertResultGreaterEqual(self, value)</strong><br />
-Just like self.assertTrue(self.result() &gt;= value), but with a nicer default message.<br />
-Equivalent to <code>assertGreaterEqual(self.result(), value)</code>.</p>
-<p><strong>assertResultIn(self, container)</strong><br />
-Just like self.assertTrue(self.result() in container), but with a nicer default message.<br />
-Equivalent to <code>assertIn(self.result(), container)</code>.</p>
-<p><strong>assertResultIs(self, value)</strong><br />
-Just like self.assertTrue(self.result() is value), but with a nicer default message.<br />
-Equivalent to <code>assertIs(self.result(), value)</code>.</p>
-<p><strong>assertResultIsInstance(self, cls)</strong><br />
-Just like self.assertTrue(self.result() in container), but with a nicer default message.<br />
-Equivalent to <code>assertIsInstance(self.result(), cls)</code>.</p>
-<p><strong>assertResultIsNot(self, value)</strong><br />
-Just like self.assertTrue(self.result() is not value), but with a nicer default message.<br />
-Equivalent to <code>assertIsNot(self.result(), value)</code>.</p>
-<p><strong>assertResultIsNotInstance(self, cls)</strong><br />
-Just like self.assertTrue(self.result() not in container), but with a nicer default message.<br />
-Equivalent to <code>assertNotIsInstance(self.result(), cls)</code>.</p>
-<p><strong>assertResultLess(self, value)</strong><br />
-Just like self.assertTrue(self.result() &lt; value), but with a nicer default message.<br />
-Equivalent to <code>assertLess(self.result(), value)</code>.</p>
-<p><strong>assertResultLessEqual(self, value)</strong><br />
-Just like self.assertTrue(self.result() &lt;= value), but with a nicer default message.<br />
-Equivalent to <code>assertLessEqual(self.result(), value)</code>.</p>
-<p><strong>assertResultList(self, lst)</strong><br />
-Assert that the result is equal to lst.<br />
-Equivalent to <code>assertListEqual(self.result(), lst)</code>.</p>
-<p><strong>assertResultNot(self, value)</strong><br />
-Fail if the result is equal to the value as determined by the '==' operator.<br />
-Equivalent to <code>assertNotEqual(self.result(), value)</code>.</p>
-<p><strong>assertResultNotAlmost(self, value, places=None, delta=None)</strong><br />
-Fail if the result is equal to the value as determined by their difference rounded
-to the given number of decimal places (default 7) and comparing to zero, or by
-comparing that the difference between the two objects is less than the given delta.<br />
-Equivalent to <code>assertNotAlmostEqual(self.result(), value)</code>.</p>
-<p><strong>assertResultNotIn(self, container)</strong><br />
-Just like self.assertTrue(self.result() not in container), but with a nicer default message.<br />
-Equivalent to <code>assertNotIn(self.result(), container)</code>.</p>
-<p><strong>assertResultNotRegex(self, unexpected_regex)</strong><br />
-Fail the test if the result matches the regular expression.<br />
-Equivalent to <code>assertNotRegex(self.result(), unexpected_regex)</code>.</p>
-<p><strong>assertResultRaises(self, expected_exception)</strong><br />
-Fail unless an exception of class expected_exception is raised by the result. If
-a different type of exception is raised, it will not be caught, and the test case
-will be deemed to have suffered an error, exactly as for an unexpected exception.<br />
-Equivalent to</p>
-<pre><code class="language-py">with self.assertRaises(expected_exception):
+                <div class="doc doc-object doc-class">
+
+
+
+<a id="unittest_extensions.case.TestCase"></a>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="unittest.TestCase">TestCase</span></code></p>
+
+  
+      <p>Extends unittest.TestCase with methods that assert the result of a defined
+<code>subject</code> method.</p>
+<pre><code>from unittest_extensions import TestCase, args
+
+
+class MyClass:
+    def my_method(self, a, b):
+        return a + b
+
+
+class TestMyMethod(TestCase):
+    def subject(self, a, b):
+        return MyClass().my_method(a, b)
+
+    @args({&quot;a&quot;: None, &quot;b&quot;: 2})
+    def test_none_plus_int(self):
+        self.assertResultRaises(TypeError)
+
+    @args({&quot;a&quot;: 10, &quot;b&quot;: 22.1})
+    def test_int_plus_float(self):
+        self.assertResult(32.1)
+</code></pre>
+
+            <details class="quote">
+              <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">BaseTestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extends unittest.TestCase with methods that assert the result of a defined</span>
+<span class="sd">    `subject` method.</span>
+
+<span class="sd">    ```</span>
+<span class="sd">    from unittest_extensions import TestCase, args</span>
+
+
+<span class="sd">    class MyClass:</span>
+<span class="sd">        def my_method(self, a, b):</span>
+<span class="sd">            return a + b</span>
+
+
+<span class="sd">    class TestMyMethod(TestCase):</span>
+<span class="sd">        def subject(self, a, b):</span>
+<span class="sd">            return MyClass().my_method(a, b)</span>
+
+<span class="sd">        @args({&quot;a&quot;: None, &quot;b&quot;: 2})</span>
+<span class="sd">        def test_none_plus_int(self):</span>
+<span class="sd">            self.assertResultRaises(TypeError)</span>
+
+<span class="sd">        @args({&quot;a&quot;: 10, &quot;b&quot;: 22.1})</span>
+<span class="sd">        def test_int_plus_float(self):</span>
+<span class="sd">            self.assertResult(32.1)</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">subject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">subjectKwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the keyword arguments of the subject.</span>
+
+<span class="sd">        The dictionary returned is a copy of the original arguments. Thus,</span>
+<span class="sd">        the arguments that the subject receives cannot be mutated by mutating</span>
+<span class="sd">        the returned object of this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># NOTE: deepcopy keeps a reference of the copied object. This can cause</span>
+        <span class="c1"># issues with memory.</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Result of the `subject` called with arguments defined by the `args`</span>
+<span class="sd">        decorator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subject</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s2">&quot;subject() got an unexpected keyword argument&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span>
+                    <span class="s2">&quot;Subject received &quot;</span>
+                    <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;subject() got &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="s2">&quot;. Did you decorate a test method with the wrong &#39;args&#39;?&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="s2">&quot;subject() missing&quot;</span> <span class="ow">in</span> <span class="n">msg</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;required positional argument&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span>
+                    <span class="s2">&quot;Subject misses &quot;</span>
+                    <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;subject() missing &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="s2">&quot;. Did you decorate all test methods with &#39;args&#39;?&quot;</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+    <span class="k">def</span> <span class="nf">cachedResult</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the result of the last `subject` call.</span>
+<span class="sd">        Use this function when you want to assert different attributes of your</span>
+<span class="sd">        subject without executing it multiple times.</span>
+
+<span class="sd">        Raises `unittest_extensions.TestError` if subject has not been called.</span>
+
+<span class="sd">        The returned object is a copy of the result. Thus, the result cannot be</span>
+<span class="sd">        mutated by mutating the returned object of this method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_subjectResult&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span><span class="s2">&quot;Cannot call &#39;cachedResult&#39; before calling &#39;result&#39;&quot;</span><span class="p">)</span>
+        <span class="c1"># NOTE: deepcopy keeps a reference of the copied object. This can cause</span>
+        <span class="c1"># issues with memory.</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail if the result is unequal to the value as determined by the &#39;==&#39;</span>
+<span class="sd">        operator.</span>
+
+<span class="sd">        Equivalent to `assertEqual(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultNot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail if the result is equal to the value as determined by the &#39;==&#39;</span>
+<span class="sd">        operator.</span>
+
+<span class="sd">        Equivalent to `assertNotEqual(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultTrue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check that the result is true.</span>
+
+<span class="sd">        Equivalent to `self.assertTrue(self.result())`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">assertResultFalse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check that the result is false.</span>
+
+<span class="sd">        Equivalent to `assertFalse(self.result())`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">assertResultIs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() is value), but with a</span>
+<span class="sd">        nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertIs(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultIsNot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() is not value), but with a</span>
+<span class="sd">        nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertIsNot(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultIn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() in container), but with a</span>
+<span class="sd">        nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertIn(self.result(), container)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">container</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultNotIn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() not in container), but</span>
+<span class="sd">        with a nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertNotIn(self.result(), container)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">container</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() in container), but with a</span>
+<span class="sd">        nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertIsInstance(self.result(), cls)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="bp">cls</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultIsNotInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() not in container), but with a</span>
+<span class="sd">        nicer default message.</span>
+
+<span class="sd">        Equivalent to `assertNotIsInstance(self.result(), cls)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="bp">cls</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultRaises</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_exception</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail unless an exception of class expected_exception is raised by the</span>
+<span class="sd">        result. If a different type of exception is raised, it will not be</span>
+<span class="sd">        caught, and the test case will be deemed to have suffered an error,</span>
+<span class="sd">        exactly as for an unexpected exception.</span>
+
+<span class="sd">        Equivalent to</span>
+<span class="sd">        ```</span>
+<span class="sd">        with self.assertRaises(expected_exception):</span>
+<span class="sd">                    self.result()</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">assertResultRaisesRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_exception</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail unless an exception of class expected_exception is raised by the</span>
+<span class="sd">        result and the message matches the regex.</span>
+
+<span class="sd">        Equivalent to</span>
+<span class="sd">        ```</span>
+<span class="sd">        with self.assertRaisesRegex(expected_exception, expected_regex):</span>
+<span class="sd">                    self.result()</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">assertResultAlmost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail if the result is unequal to the value as determined by their</span>
+<span class="sd">        difference rounded to the given number of decimal places (default 7)</span>
+<span class="sd">        and comparing to zero, or by comparing that the difference between the</span>
+<span class="sd">        two objects is more than the given delta.</span>
+
+<span class="sd">        Equivalent to `assertAlmostEqual(self.result(), value, places, delta=delta).`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultNotAlmost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail if the result is equal to the value as determined by their</span>
+<span class="sd">        difference rounded to the given number of decimal places (default 7)</span>
+<span class="sd">        and comparing to zero, or by comparing that the difference between the</span>
+<span class="sd">        two objects is less than the given delta.</span>
+
+<span class="sd">        Equivalent to `assertResultNotAlmost(self, value, places=None, delta=None)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultGreater</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() &gt; value), but with a nicer</span>
+<span class="sd">        default message.</span>
+
+<span class="sd">        Equivalent to `assertGreater(self, result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreater</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultGreaterEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() &gt;= value), but with a nicer</span>
+<span class="sd">        default message.</span>
+
+<span class="sd">        Equivalent to `assertGreaterEqual(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultLess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() &lt; value), but with a nicer</span>
+<span class="sd">        default message.</span>
+
+<span class="sd">        Equivalent to `assertLess(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertLess</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultLessEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Just like self.assertTrue(self.result() &lt;= value), but with a nicer</span>
+<span class="sd">        default message.</span>
+
+<span class="sd">        Equivalent to `assertLessEqual(self.result(), value)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertLessEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail the test unless the result matches the regular expression.</span>
+
+<span class="sd">        Equivalent to `self.assertRegex(self.result(), expected_regex)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRegex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">expected_regex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultNotRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unexpected_regex</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fail the test if the result matches the regular expression.</span>
+
+<span class="sd">        Equivalent to `assertNotRegex(self.result(), unexpected_regex)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotRegex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">unexpected_regex</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert that the result has the same elements as the iterable without</span>
+<span class="sd">        regard to order.</span>
+
+<span class="sd">        Equivalent to `assertCountEqual(self.result(), iterable).`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertCountEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">iterable</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert that the result is equal to lst.</span>
+
+<span class="sd">        Equivalent to `assertListEqual(self.result(), lst)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">lst</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultTuple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tpl</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert that the result is equal to tpl.</span>
+
+<span class="sd">        Equivalent to `self.assertTupleEqual(self.result(), tpl)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTupleEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">tpl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultSet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">st</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert that the result is equal to st.</span>
+
+<span class="sd">        Equivalent to `self.assertSetEqual(self.result(), st)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertSetEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">st</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">assertResultDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assert that the result is equal to dct.</span>
+
+<span class="sd">        Equivalent to `assertDictEqual(self.result(), dct)`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertDictEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">dct</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_callTestMethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="s2">&quot;_subjectKwargs&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">_subjectKwargs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">method</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;It is deprecated to return a value that is not None from a &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;test case (</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResult" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResult</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail if the result is unequal to the value as determined by the '=='
+operator.</p>
+<p>Equivalent to <code>assertEqual(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail if the result is unequal to the value as determined by the &#39;==&#39;</span>
+<span class="sd">    operator.</span>
+
+<span class="sd">    Equivalent to `assertEqual(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultAlmost" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultAlmost</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail if the result is unequal to the value as determined by their
+difference rounded to the given number of decimal places (default 7)
+and comparing to zero, or by comparing that the difference between the
+two objects is more than the given delta.</p>
+<p>Equivalent to <code>assertAlmostEqual(self.result(), value, places, delta=delta).</code></p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultAlmost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail if the result is unequal to the value as determined by their</span>
+<span class="sd">    difference rounded to the given number of decimal places (default 7)</span>
+<span class="sd">    and comparing to zero, or by comparing that the difference between the</span>
+<span class="sd">    two objects is more than the given delta.</span>
+
+<span class="sd">    Equivalent to `assertAlmostEqual(self.result(), value, places, delta=delta).`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultCount" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultCount</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Assert that the result has the same elements as the iterable without
+regard to order.</p>
+<p>Equivalent to <code>assertCountEqual(self.result(), iterable).</code></p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assert that the result has the same elements as the iterable without</span>
+<span class="sd">    regard to order.</span>
+
+<span class="sd">    Equivalent to `assertCountEqual(self.result(), iterable).`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertCountEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">iterable</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultDict" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultDict</span><span class="p">(</span><span class="n">dct</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Assert that the result is equal to dct.</p>
+<p>Equivalent to <code>assertDictEqual(self.result(), dct)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assert that the result is equal to dct.</span>
+
+<span class="sd">    Equivalent to `assertDictEqual(self.result(), dct)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertDictEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">dct</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultFalse" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultFalse</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Check that the result is false.</p>
+<p>Equivalent to <code>assertFalse(self.result())</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultFalse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check that the result is false.</span>
+
+<span class="sd">    Equivalent to `assertFalse(self.result())`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultGreater" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultGreater</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() &gt; value), but with a nicer
+default message.</p>
+<p>Equivalent to <code>assertGreater(self, result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultGreater</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() &gt; value), but with a nicer</span>
+<span class="sd">    default message.</span>
+
+<span class="sd">    Equivalent to `assertGreater(self, result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertGreater</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultGreaterEqual" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultGreaterEqual</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() &gt;= value), but with a nicer
+default message.</p>
+<p>Equivalent to <code>assertGreaterEqual(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultGreaterEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() &gt;= value), but with a nicer</span>
+<span class="sd">    default message.</span>
+
+<span class="sd">    Equivalent to `assertGreaterEqual(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertGreaterEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultIn" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultIn</span><span class="p">(</span><span class="n">container</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() in container), but with a
+nicer default message.</p>
+<p>Equivalent to <code>assertIn(self.result(), container)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultIn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() in container), but with a</span>
+<span class="sd">    nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertIn(self.result(), container)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">container</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultIs" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultIs</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() is value), but with a
+nicer default message.</p>
+<p>Equivalent to <code>assertIs(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultIs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() is value), but with a</span>
+<span class="sd">    nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertIs(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertIs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultIsInstance" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultIsInstance</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() in container), but with a
+nicer default message.</p>
+<p>Equivalent to <code>assertIsInstance(self.result(), cls)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() in container), but with a</span>
+<span class="sd">    nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertIsInstance(self.result(), cls)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="bp">cls</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultIsNot" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultIsNot</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() is not value), but with a
+nicer default message.</p>
+<p>Equivalent to <code>assertIsNot(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultIsNot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() is not value), but with a</span>
+<span class="sd">    nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertIsNot(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertIsNot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultIsNotInstance" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultIsNotInstance</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() not in container), but with a
+nicer default message.</p>
+<p>Equivalent to <code>assertNotIsInstance(self.result(), cls)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultIsNotInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() not in container), but with a</span>
+<span class="sd">    nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertNotIsInstance(self.result(), cls)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="bp">cls</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultLess" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultLess</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() &lt; value), but with a nicer
+default message.</p>
+<p>Equivalent to <code>assertLess(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultLess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() &lt; value), but with a nicer</span>
+<span class="sd">    default message.</span>
+
+<span class="sd">    Equivalent to `assertLess(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertLess</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultLessEqual" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultLessEqual</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() &lt;= value), but with a nicer
+default message.</p>
+<p>Equivalent to <code>assertLessEqual(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultLessEqual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() &lt;= value), but with a nicer</span>
+<span class="sd">    default message.</span>
+
+<span class="sd">    Equivalent to `assertLessEqual(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertLessEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultList" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultList</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Assert that the result is equal to lst.</p>
+<p>Equivalent to <code>assertListEqual(self.result(), lst)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assert that the result is equal to lst.</span>
+
+<span class="sd">    Equivalent to `assertListEqual(self.result(), lst)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertListEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">lst</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultNot" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultNot</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail if the result is equal to the value as determined by the '=='
+operator.</p>
+<p>Equivalent to <code>assertNotEqual(self.result(), value)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultNot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail if the result is equal to the value as determined by the &#39;==&#39;</span>
+<span class="sd">    operator.</span>
+
+<span class="sd">    Equivalent to `assertNotEqual(self.result(), value)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultNotAlmost" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultNotAlmost</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail if the result is equal to the value as determined by their
+difference rounded to the given number of decimal places (default 7)
+and comparing to zero, or by comparing that the difference between the
+two objects is less than the given delta.</p>
+<p>Equivalent to <code>assertResultNotAlmost(self, value, places=None, delta=None)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultNotAlmost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail if the result is equal to the value as determined by their</span>
+<span class="sd">    difference rounded to the given number of decimal places (default 7)</span>
+<span class="sd">    and comparing to zero, or by comparing that the difference between the</span>
+<span class="sd">    two objects is less than the given delta.</span>
+
+<span class="sd">    Equivalent to `assertResultNotAlmost(self, value, places=None, delta=None)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotAlmostEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">value</span><span class="p">,</span> <span class="n">places</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultNotIn" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultNotIn</span><span class="p">(</span><span class="n">container</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Just like self.assertTrue(self.result() not in container), but
+with a nicer default message.</p>
+<p>Equivalent to <code>assertNotIn(self.result(), container)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultNotIn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">container</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Just like self.assertTrue(self.result() not in container), but</span>
+<span class="sd">    with a nicer default message.</span>
+
+<span class="sd">    Equivalent to `assertNotIn(self.result(), container)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotIn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">container</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultNotRegex" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultNotRegex</span><span class="p">(</span><span class="n">unexpected_regex</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail the test if the result matches the regular expression.</p>
+<p>Equivalent to <code>assertNotRegex(self.result(), unexpected_regex)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultNotRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unexpected_regex</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail the test if the result matches the regular expression.</span>
+
+<span class="sd">    Equivalent to `assertNotRegex(self.result(), unexpected_regex)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertNotRegex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">unexpected_regex</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultRaises" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultRaises</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail unless an exception of class expected_exception is raised by the
+result. If a different type of exception is raised, it will not be
+caught, and the test case will be deemed to have suffered an error,
+exactly as for an unexpected exception.</p>
+<p>Equivalent to</p>
+<pre><code>with self.assertRaises(expected_exception):
             self.result()
 </code></pre>
-<p><strong>assertResultRaisesRegex(self, expected_exception, expected_regex)</strong><br />
-Fail unless an exception of class expected_exception is raised by the result and the message matches the regex.<br />
-Equivalent to</p>
-<pre><code class="language-py">with self.assertRaisesRegex(expected_exception, expected_regex):
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultRaises</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail unless an exception of class expected_exception is raised by the</span>
+<span class="sd">    result. If a different type of exception is raised, it will not be</span>
+<span class="sd">    caught, and the test case will be deemed to have suffered an error,</span>
+<span class="sd">    exactly as for an unexpected exception.</span>
+
+<span class="sd">    Equivalent to</span>
+<span class="sd">    ```</span>
+<span class="sd">    with self.assertRaises(expected_exception):</span>
+<span class="sd">                self.result()</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultRaisesRegex" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultRaisesRegex</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail unless an exception of class expected_exception is raised by the
+result and the message matches the regex.</p>
+<p>Equivalent to</p>
+<pre><code>with self.assertRaisesRegex(expected_exception, expected_regex):
             self.result()
 </code></pre>
-<p><strong>assertResultRegex(self, expected_regex)</strong><br />
-Fail the test unless the result matches the regular expression.<br />
-Equivalent to <code>self.assertRegex(self.result(), expected_regex)</code>.</p>
-<p><strong>assertResultSet(self, st)</strong><br />
-Assert that the result is equal to st.<br />
-Equivalent to <code>self.assertSetEqual(self.result(), st)</code>.</p>
-<p><strong>assertResultTrue(self)</strong><br />
-Check that the result is true.<br />
-Equivalent to <code>self.assertTrue(self.result())</code>.</p>
-<p><strong>assertResultTuple(self, tpl)</strong><br />
-Assert that the result is equal to tpl.<br />
-Equivalent to <code>self.assertTupleEqual(self.result(), tpl)</code>.</p>
-<p><strong>cachedResult(self) -&gt; Any</strong><br />
-Return the result of the last <code>subject</code> call. Use this function when you want to
-assert different attributes of your subject without executing it multiple times.  </p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultRaisesRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_exception</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail unless an exception of class expected_exception is raised by the</span>
+<span class="sd">    result and the message matches the regex.</span>
+
+<span class="sd">    Equivalent to</span>
+<span class="sd">    ```</span>
+<span class="sd">    with self.assertRaisesRegex(expected_exception, expected_regex):</span>
+<span class="sd">                self.result()</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaisesRegex</span><span class="p">(</span><span class="n">expected_exception</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultRegex" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultRegex</span><span class="p">(</span><span class="n">expected_regex</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fail the test unless the result matches the regular expression.</p>
+<p>Equivalent to <code>self.assertRegex(self.result(), expected_regex)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_regex</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fail the test unless the result matches the regular expression.</span>
+
+<span class="sd">    Equivalent to `self.assertRegex(self.result(), expected_regex)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertRegex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">expected_regex</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultSet" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultSet</span><span class="p">(</span><span class="n">st</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Assert that the result is equal to st.</p>
+<p>Equivalent to <code>self.assertSetEqual(self.result(), st)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultSet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">st</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assert that the result is equal to st.</span>
+
+<span class="sd">    Equivalent to `self.assertSetEqual(self.result(), st)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertSetEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">st</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultTrue" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultTrue</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Check that the result is true.</p>
+<p>Equivalent to <code>self.assertTrue(self.result())</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultTrue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check that the result is true.</span>
+
+<span class="sd">    Equivalent to `self.assertTrue(self.result())`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.assertResultTuple" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">assertResultTuple</span><span class="p">(</span><span class="n">tpl</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Assert that the result is equal to tpl.</p>
+<p>Equivalent to <code>self.assertTupleEqual(self.result(), tpl)</code>.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assertResultTuple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tpl</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assert that the result is equal to tpl.</span>
+
+<span class="sd">    Equivalent to `self.assertTupleEqual(self.result(), tpl)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertTupleEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">tpl</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.cachedResult" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">cachedResult</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Return the result of the last <code>subject</code> call.
+Use this function when you want to assert different attributes of your
+subject without executing it multiple times.</p>
 <p>Raises <code>unittest_extensions.TestError</code> if subject has not been called.</p>
-<p><strong>result(self) -&gt; Any</strong><br />
-Result of the <code>subject</code> called with arguments defined by the <code>args</code> decorator.</p>
+<p>The returned object is a copy of the result. Thus, the result cannot be
+mutated by mutating the returned object of this method.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cachedResult</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the result of the last `subject` call.</span>
+<span class="sd">    Use this function when you want to assert different attributes of your</span>
+<span class="sd">    subject without executing it multiple times.</span>
+
+<span class="sd">    Raises `unittest_extensions.TestError` if subject has not been called.</span>
+
+<span class="sd">    The returned object is a copy of the result. Thus, the result cannot be</span>
+<span class="sd">    mutated by mutating the returned object of this method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_subjectResult&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span><span class="s2">&quot;Cannot call &#39;cachedResult&#39; before calling &#39;result&#39;&quot;</span><span class="p">)</span>
+    <span class="c1"># NOTE: deepcopy keeps a reference of the copied object. This can cause</span>
+    <span class="c1"># issues with memory.</span>
+    <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.result" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">result</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Result of the <code>subject</code> called with arguments defined by the <code>args</code>
+decorator.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Result of the `subject` called with arguments defined by the `args`</span>
+<span class="sd">    decorator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subject</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subjectResult</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;subject() got an unexpected keyword argument&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span>
+                <span class="s2">&quot;Subject received &quot;</span>
+                <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;subject() got &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="o">+</span> <span class="s2">&quot;. Did you decorate a test method with the wrong &#39;args&#39;?&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;subject() missing&quot;</span> <span class="ow">in</span> <span class="n">msg</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;required positional argument&quot;</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">TestError</span><span class="p">(</span>
+                <span class="s2">&quot;Subject misses &quot;</span>
+                <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;subject() missing &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="o">+</span> <span class="s2">&quot;. Did you decorate all test methods with &#39;args&#39;?&quot;</span>
+            <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="unittest_extensions.case.TestCase.subjectKwargs" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">subjectKwargs</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Return the keyword arguments of the subject.</p>
+<p>The dictionary returned is a copy of the original arguments. Thus,
+the arguments that the subject receives cannot be mutated by mutating
+the returned object of this method.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>src/unittest_extensions/case.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">subjectKwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the keyword arguments of the subject.</span>
+
+<span class="sd">    The dictionary returned is a copy of the original arguments. Thus,</span>
+<span class="sd">    the arguments that the subject receives cannot be mutated by mutating</span>
+<span class="sd">    the returned object of this method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># NOTE: deepcopy keeps a reference of the copied object. This can cause</span>
+    <span class="c1"># issues with memory.</span>
+    <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_subjectKwargs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+
+</div>
               
             </div>
           </div><footer>
@@ -200,7 +2019,6 @@ Result of the <code>subject</code> called with arguments defined by the <code>ar
     <script>var base_url = "..";</script>
     <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
