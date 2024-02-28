@@ -1,3 +1,16 @@
+[![image](https://img.shields.io/pypi/v/unittest-extensions.svg)](https://pypi.python.org/pypi/unittest-extensions)
+[![image](https://img.shields.io/pypi/l/unittest-extensions.svg)](https://opensource.org/license/mit/)
+[![image](https://img.shields.io/pypi/pyversions/unittest-extensions.svg)](https://pypi.python.org/pypi/unittest-extensions)
+[![Actions status](https://github.com/Maxcode123/unittest-extensions/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Maxcode123/unittest-extensions/actions/workflows/test-package.yml?query=branch%3Amain)
+
+---
+
+**Documentation:** https://maxcode123.github.io/unittest-extensions/  
+**Source code:** https://github.com/Maxcode123/unittest-extensions  
+**PyPI:** https://pypi.org/project/unittest-extensions/
+
+---
+
 # **unittest-extensions**
 Extension of Python's standard unittest library  
 
@@ -12,10 +25,6 @@ This minimal library aims to simplify behavioural testing with Python's standard
 
  `unittest-extensions` does not have any dependencies, it is solely based on the
  Python standard library and mainly inspired by Ruby's [`RSpec`](https://rspec.info/) framework.  
-
-# Documentation
-This project is documented at:  
-https://maxcode123.github.io/unittest-extensions/
 
 
 # Installation
@@ -136,6 +145,3 @@ if __name__ == "__main__":
 The number of lines is still the same, but the testing code has become clearer:  
 1. The subject of our assertions in each test case is documented in the `subject` method
 2. Each test method contains only information we care about, i.e. the input data (names/surnames) we test and the result of the assertion (true/false).
-
-# License
-[MIT License](https://opensource.org/license/mit/)
