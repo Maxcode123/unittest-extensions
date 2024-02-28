@@ -182,3 +182,14 @@ class TestSubjectMutableKwargs(TestCase):
     def test_mutable_kwargs(self):
         self.subjectKwargs()["lst"].append(3)
         self.assertDictEqual(self._subjectKwargs, {"lst": [1, 2]})
+
+
+class TestCachedResult(TestCase):
+    def subject(self, lst):
+        return lst
+
+    @args({"lst": [1, 2]})
+    def test_mutate_cached_result(self):
+        self.assertResult([1, 2])
+        self.cachedResult().append(3)
+        self.assertListEqual(self.cachedResult(), [1, 2])

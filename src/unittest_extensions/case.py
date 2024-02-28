@@ -81,10 +81,15 @@ class TestCase(BaseTestCase):
         subject without executing it multiple times.
 
         Raises `unittest_extensions.TestError` if subject has not been called.
+
+        The returned object is a copy of the result. Thus, the result cannot be
+        mutated by mutating the returned object of this method.
         """
         if not hasattr(self, "_subject_result"):
             raise TestError("Cannot call 'cachedResult' before calling 'result'")
-        return self._subject_result
+        # NOTE: deepcopy keeps a reference of the copied object. This can cause
+        # issues with memory.
+        return deepcopy(self._subject_result)
 
     def assertResult(self, value):
         """
