@@ -193,3 +193,14 @@ class TestCachedResult(TestCase):
         self.assertResult([1, 2])
         self.cachedResult().append(3)
         self.assertListEqual(self.cachedResult(), [1, 2])
+
+
+class TestRaiseEmptyException(TestCase):
+    class MyError(Exception):
+        pass
+
+    def subject(self):
+        raise self.MyError()  # exception should be empty, i.e. no args
+
+    def test_reraises_empty_exception(self):
+        self.assertResultRaises(self.MyError)
