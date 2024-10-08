@@ -82,7 +82,6 @@ class TestSubjectMissingRequiredPositionalArguments(TestCase):
 
 
 class TestAppend(TestCase):
-
     def instance(self) -> TestClass:
         return TestClass()
 
@@ -204,3 +203,11 @@ class TestRaiseEmptyException(TestCase):
 
     def test_reraises_empty_exception(self):
         self.assertResultRaises(self.MyError)
+
+
+class TestRaiseExceptionWithNonStrArgs(TestCase):
+    def subject(self):
+        raise KeyError(2)
+
+    def test_reraises_error(self):
+        self.assertResultRaises(KeyError)

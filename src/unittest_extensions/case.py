@@ -61,7 +61,8 @@ class TestCase(BaseTestCase):
         except Exception as e:
             if len(e.args) == 0:
                 raise e
-            msg = e.args[0]
+
+            msg = str(e.args[0])
             if "subject() got an unexpected keyword argument" in msg:
                 raise TestError(
                     "Subject received "
