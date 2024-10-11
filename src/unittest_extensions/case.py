@@ -1,5 +1,5 @@
 from unittest import TestCase as BaseTestCase
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 from abc import abstractmethod
 from warnings import warn
 from copy import deepcopy
@@ -12,37 +12,42 @@ class TestCase(BaseTestCase):
     Extends unittest.TestCase with methods that assert the result of a defined
     `subject` method.
 
-    ```
-    from unittest_extensions import TestCase, args
+    Inherit from this class for your test-case classes and decorate test methods
+    with the @args decorator.
 
+    Examples:
+        >>> from unittest_extensions import TestCase, args
 
-    class MyClass:
-        def my_method(self, a, b):
-            return a + b
+        >>> class MyClass:
+        ...     def my_method(self, a, b):
+        ...         return a + b
 
+        >>> class TestMyMethod(TestCase):
+        ...     def subject(self, a, b):
+        ...         return MyClass().my_method(a, b)
 
-    class TestMyMethod(TestCase):
-        def subject(self, a, b):
-            return MyClass().my_method(a, b)
+        ...     @args(None, 2)
+        ...     def test_none_plus_int(self):
+        ...         self.assertResultRaises(TypeError)
 
-        @args({"a": None, "b": 2})
-        def test_none_plus_int(self):
-            self.assertResultRaises(TypeError)
+        ...     @args(a=10, b=22.1)
+        ...     def test_int_plus_float(self):
+        ...         self.assertResult(32.1)
 
-        @args({"a": 10, "b": 22.1})
-        def test_int_plus_float(self):
-            self.assertResult(32.1)
-    ```
+        ...     @args("1", b="2")
+        ...     def test_str_plus_str(self):
+        ...         self.assertResult("12")
     """
 
     @abstractmethod
-    def subject(self, **kwargs) -> Any: ...
+    def subject(self, *args, **kwargs) -> Any:
+        raise TestError("No 'subject' method found; perhaps you mispelled it?")
 
     def subjectKwargs(self) -> Dict[str, Any]:
         """
         Return the keyword arguments of the subject.
 
-        The dictionary returned is a copy of the original arguments. Thus,
+        The dictionary returned is a deep copy of the original arguments. Thus,
         the arguments that the subject receives cannot be mutated by mutating
         the returned object of this method.
         """
@@ -50,13 +55,26 @@ class TestCase(BaseTestCase):
         # issues with memory.
         return deepcopy(self._subjectKwargs)
 
+    def subjectArgs(self) -> Tuple:
+        """
+        Return the positional arguments of the subject.
+
+        The tuple returned is a deep copy of the original arguments. Thus,
+        the arguments that the subject receives cannot be mutated by mutating
+        the returned object of this method.
+        """
+        # NOTE: deepcopy keeps a reference of the copied object. This can cause
+        # issues with memory.
+        return deepcopy(self._subjectArgs)
+
     def result(self) -> Any:
         """
-        Result of the `subject` called with arguments defined by the `args`
-        decorator.
+        Result of the `subject` called with arguments defined by the `args` decorator.
         """
         try:
-            self._subjectResult = self.subject(**self._subjectKwargs)
+            self._subjectResult = self.subject(
+                *self._subjectArgs, **self._subjectKwargs
+            )
             return self._subjectResult
         except Exception as e:
             if len(e.args) == 0:
@@ -328,6 +346,11 @@ class TestCase(BaseTestCase):
         self.assertDictEqual(self.result(), dct)
 
     def _callTestMethod(self, method):
+        if hasattr(method, "_subjectArgs"):
+            self._subjectArgs = method._subjectArgs
+        else:
+            self._subjectArgs = tuple()
+
         if hasattr(method, "_subjectKwargs"):
             self._subjectKwargs = method._subjectKwargs
         else:
@@ -341,3 +364,4 @@ class TestCase(BaseTestCase):
                 stacklevel=3,
             )
         self._subjectKwargs = {}
+        self._subjectArgs = tuple()
