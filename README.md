@@ -48,7 +48,7 @@ class User:
 This is a dummy example, meaning that how exactly the User and their methods are implemented does not really matter; what we actually care about here is how to test this code given the above implementation.   
 Say we'd like to test the `is_relative_to` method with pairs of User names and surnames using the standard `unittest` library.
 So, here's an example of how we could do that as simply as possible:
-## unittest
+## std unittest
 
 ```py
 from unittest import main, TestCase
@@ -108,11 +108,11 @@ class TestIsRelativeToSameName(TestCase):
     def subject(self, name1, name2):
         return User(name1, "Strindberg").is_relative_to(User(name2, "Ibsen"))
 
-    @args({"name1": "Niklas", "name2": "Niklas"})
+    @args("Niklas", "Niklas")
     def test_same_name(self):
         self.assertResultFalse()
 
-    @args({"name1": "", "name2": ""})
+    @args(name1="", name2="")
     def test_same_empty_name(self):
         self.assertResultFalse()
 
@@ -121,19 +121,19 @@ class TestIsRelativeToSameSurname(TestCase):
     def subject(self, surname1, surname2):
         return User("August", surname1).is_relative_to(User("Henrik", surname2))
 
-    @args({"surname1": "Nietzsche", "surname2": "Nietzsche"})
+    @args("Nietzsche", "Nietzsche")
     def test_same_surname(self):
         self.assertResultTrue()
 
-    @args({"surname1": "", "surname2": ""})
+    @args(surname1="", surname2="")
     def test_same_empty_surname(self):
         self.assertResultTrue()
 
-    @args({"surname1": "NiEtZsChE", "surname2": "Nietzsche"})
+    @args("NiEtZsChE", surname2="Nietzsche")
     def test_same_surname_case_sensitive(self):
         self.assertResultTrue()
 
-    @args({"surname1": "Nietzsche", "surname2": "Solszenietzsche"})
+    @args("Nietzsche", "Solszenietzsche")
     def test_surname2_contains_surname1(self):
         self.assertResultFalse()
 
