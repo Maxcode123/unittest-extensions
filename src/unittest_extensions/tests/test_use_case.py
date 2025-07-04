@@ -403,3 +403,16 @@ class TestSubjectMethodMisspelling(TestCase):
         self.assertResultRaisesRegex(
             TestError, "No 'subject' method found; perhaps you mispelled it?"
         )
+
+
+class TestAssertResultNotRaises(TestCase):
+    def subject(self, r=False):
+        if r:
+            raise KeyError
+
+    def test_does_not_raise(self):
+        self.assertResultNotRaises()
+
+    @args(r=True)
+    def test_raises(self):
+        self.assertResultRaises(KeyError)

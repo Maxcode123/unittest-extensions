@@ -216,6 +216,13 @@ class TestCase(BaseTestCase):
         with self.assertRaises(expected_exception):
             self.result()
 
+    def assertResultNotRaises(self):
+        """
+        Fail if an exception is raised by the result. This is equivalent to
+        just executing the result `self.result()`.
+        """
+        self.result()
+
     def assertResultRaisesRegex(self, expected_exception, expected_regex):
         """
         Fail unless an exception of class expected_exception is raised by the
