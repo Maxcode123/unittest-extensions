@@ -262,7 +262,7 @@ class TestChangeState(TestCase):
         self.instance = TestClass()
 
     def tearDown(self) -> None:
-        self.instance = None
+        del self.instance
 
     def subject(self):
         self.instance.change_state()

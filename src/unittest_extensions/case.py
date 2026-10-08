@@ -1,8 +1,10 @@
-from unittest import TestCase as BaseTestCase
-from typing import Any, Dict, Tuple
+from __future__ import annotations
+
 from abc import abstractmethod
-from warnings import warn
 from copy import deepcopy
+from typing import Any
+from unittest import TestCase as BaseTestCase
+from warnings import warn
 
 from unittest_extensions.error import TestError
 
@@ -43,7 +45,7 @@ class TestCase(BaseTestCase):
     def subject(self, *args, **kwargs) -> Any:
         raise TestError("No 'subject' method found; perhaps you mispelled it?")
 
-    def subjectKwargs(self) -> Dict[str, Any]:
+    def subjectKwargs(self) -> dict[str, Any]:
         """
         Return the keyword arguments of the subject.
 
@@ -55,7 +57,7 @@ class TestCase(BaseTestCase):
         # issues with memory.
         return deepcopy(self._subjectKwargs)
 
-    def subjectArgs(self) -> Tuple:
+    def subjectArgs(self) -> tuple:
         """
         Return the positional arguments of the subject.
 
@@ -78,7 +80,7 @@ class TestCase(BaseTestCase):
             return self._subjectResult
         except Exception as e:
             if len(e.args) == 0:
-                raise e
+                raise
 
             msg = str(e.args[0])
             if "subject() got an unexpected keyword argument" in msg:
@@ -93,7 +95,7 @@ class TestCase(BaseTestCase):
                     + msg.split("subject() missing ")[1]
                     + ". Did you decorate all test methods with 'args'?"
                 )
-            raise e
+            raise
 
     def cachedResult(self) -> Any:
         """
@@ -356,7 +358,7 @@ class TestCase(BaseTestCase):
         if hasattr(method, "_subjectArgs"):
             self._subjectArgs = method._subjectArgs
         else:
-            self._subjectArgs = tuple()
+            self._subjectArgs = ()
 
         if hasattr(method, "_subjectKwargs"):
             self._subjectKwargs = method._subjectKwargs
@@ -371,4 +373,4 @@ class TestCase(BaseTestCase):
                 stacklevel=3,
             )
         self._subjectKwargs = {}
-        self._subjectArgs = tuple()
+        self._subjectArgs = ()
