@@ -165,3 +165,8 @@ settings.json
 
 # direnv
 .envrc
+# Ruff
+.ruff_cache/
+
+# uv
+uv.lock

@@ -1,29 +1,31 @@
-install-documentation-builder:
-	$(PIP) install mkdocs 'mkdocstrings[python]'
+.PHONY: lint format type-check install-local-package test start-doc-server deploy-documentation build clean publish
 
-start-documentation-server:
-	$(INTERPRETER) -m mkdocs serve
+lint:
+	uv run ruff check --exclude src/unittest_extensions/tests
 
-deploy-documentation:
-	$(INTERPRETER) -m mkdocs gh-deploy --config-file mkdocs.yml
+format:
+	uv run ruff format ./
 
-install-package-builder:
-	$(PIP) install --upgrade build
-
-install-package-uploader:
-	$(PIP) install --upgrade twine
+type-check:
+	uv run ty check
 
 install-local-package:
-	$(PIP) install -e .
+	uv pip install -e .
 
-test-package:
-	$(INTERPRETER) -m unittest discover -v src/unittest_extensions/tests/
+test:
+	uv run python -m unittest discover -v src/unittest_extensions/tests/
 
-build-package:
-	$(INTERPRETER) -m build
+start-doc-server:
+	uv run python -m mkdocs serve
 
-upload-package:
-	$(INTERPRETER) -m twine upload --verbose -u '__token__' dist/*
+deploy-documentation:
+	uv run python -m mkdocs gh-deploy --config-file mkdocs.yml
+
+build:
+	uv build
 
 clean:
 	rm -rf dist src/unittest_extensions.egg-info
+
+publish:
+	uv publish

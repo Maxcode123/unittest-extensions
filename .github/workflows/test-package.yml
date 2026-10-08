@@ -16,17 +16,18 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-    env:
-      INTERPRETER: python
-      PIP: python -m pip
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+    - uses: actions/checkout@v4
+    - name: Set up uv with Python ${{ matrix.python-version }}
+      uses: astral-sh/setup-uv@v6
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install local package
-      run: make install-local-package
+    - name: Lint
+      run: make lint
+    - name: Check formatting
+      run: uv run ruff format --check ./
+    - name: Type check
+      run: make type-check
     - name: Test package
-      run: make test-package
+      run: make test
