@@ -37,6 +37,7 @@ Suppose you have some code that looks like this:
 ```py
 from dataclasses import dataclass
 
+
 @dataclass
 class User:
     name: str
